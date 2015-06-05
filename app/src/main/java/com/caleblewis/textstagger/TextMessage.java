@@ -3,15 +3,19 @@ package com.caleblewis.textstagger;
 import java.util.Date;
 
 public class TextMessage {
-    private String name, message, phone;
-    private Date date;
+    private String name, message, phone, date;
+    private long id;
 
-    public TextMessage(String name, String message, String phone, Date date) {
+    public TextMessage(String name, String message, String phone, String date) {
         this.name = name;
         this.message = message;
         this.phone = phone;
         this.date = date;
     }
+
+    public long getId() {return id;}
+
+    public void setId(long id) {this.id = id; }
 
     public String getName() {
         return name;
@@ -25,7 +29,7 @@ public class TextMessage {
         return phone;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 }

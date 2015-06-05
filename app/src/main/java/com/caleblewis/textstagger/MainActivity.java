@@ -12,6 +12,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -22,12 +23,20 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MessagesDB db = new MessagesDB(this);
+        db.createDB();
+
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.text_message_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        ArrayList<HashMap<String, String>> messagesFromDb = db.getMessages();
         List<TextMessage> messages = new ArrayList<>();
-        messages.add(new TextMessage("name1", "This is my message", "555555555", new Date()));
-        messages.add(new TextMessage("name2", "This is my other message", "33333333333", new Date()));
+
+
+        for(HashMap<String, String> message: messagesFromDb){
+            TextMessage t = new TextMessage(message.get("name"), message.get("message"), message.get("phone"), message.get("date"));
+            messages.add(t);
+        }
 
         mRecyclerView.setAdapter(new TextMessageListAdapter(messages));
     }

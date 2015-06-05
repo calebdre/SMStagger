@@ -31,6 +31,7 @@ public class TextMessageListAdapter extends RecyclerView.Adapter<TextMessageList
         holder.name.setText(tm.getName());
         holder.phone.setText(tm.getPhone());
         holder.message.setText(tm.getMessage());
+        holder.date.setText(tm.getMessage());
     }
 
     @Override
@@ -43,6 +44,7 @@ public class TextMessageListAdapter extends RecyclerView.Adapter<TextMessageList
         protected TextView name;
         protected TextView phone;
         protected TextView message;
+        protected TextView date;
 
         public TextMessageViewHolder(View v) {
             super(v);
@@ -50,6 +52,7 @@ public class TextMessageListAdapter extends RecyclerView.Adapter<TextMessageList
             this.name = (TextView) v.findViewById(R.id.tmName);
             this.phone = (TextView) v.findViewById(R.id.tmPhone);
             this.message = (TextView) v.findViewById(R.id.tmMessage);
+            this.date = (TextView) v.findViewById(R.id.tmDate);
         }
     }
 

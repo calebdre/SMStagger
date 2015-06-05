@@ -46,7 +46,6 @@ public class CreateTextMessageActivity extends Activity{
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
 
-    private SimpleDateFormat dateFormatter = new SimpleDateFormat("MMMM dd", Locale.US);
     private ContactsFilter contactsFilter;
     private TextMessageBuilder messageBuilder = new TextMessageBuilder();
 
@@ -130,7 +129,7 @@ public class CreateTextMessageActivity extends Activity{
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 dateBuilder.set(year, monthOfYear, dayOfMonth);
 
-                dateText.setText(dateFormatter.format(dateBuilder.getTime()));
+                dateText.setText(new SimpleDateFormat("MMMM dd", Locale.US).format(dateBuilder.getTime()));
             }
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
@@ -171,7 +170,7 @@ public class CreateTextMessageActivity extends Activity{
 
     public void createTextMessage(View view) {
         messageBuilder.setMessage(messageField.getText().toString());
-        messageBuilder.setDate(dateBuilder.getTime());
+        messageBuilder.setDate(new SimpleDateFormat("MMMM dd (EEEE) 'at' h:m a", Locale.US).format(dateBuilder.getTime()));
 
         try {
             TextMessage t = messageBuilder.build();
