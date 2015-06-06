@@ -1,119 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:orientation="vertical"
+
     android:weightSum="1">
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/new_text_recipient"
-        style="@style/materialEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Recipient"
-        app:met_floatingLabel="highlight"
-        app:met_primaryColor="@color/primary" />
-
-    <ListView
-        android:id="@+id/contact_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/new_text_phone"
-        style="@style/materialEditText"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        app:met_floatingLabel="highlight"
-        app:met_primaryColor="@color/primary" />
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/create_message_tool_bar" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_below="@id/tool_bar">
 
-        <RelativeLayout
-            android:layout_width="0dip"
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/new_text_recipient"
+            style="@style/materialEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".4">
+            android:hint="Recipient"
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/new_text_date"
-                style="@style/materialEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="Date"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="@color/primary" />
-        </RelativeLayout>
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/primary" />
 
+        <ListView
+            android:id="@+id/contact_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <RelativeLayout
-            android:layout_width="0dip"
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/new_text_phone"
+            style="@style/materialEditText"
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".2">
+            android:hint="Phone Number"
+            android:inputType="phone"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/primary" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="\@" />
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_width="0dip"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".4">
+            android:orientation="horizontal">
 
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/new_text_time"
-                style="@style/materialEditText"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="Time"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="@color/primary" />
-        </RelativeLayout>
+                android:layout_weight=".4">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/new_text_date"
+                    style="@style/materialEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Date"
+                    app:met_floatingLabel="highlight"
+                    app:met_primaryColor="@color/primary" />
+            </RelativeLayout>
 
 
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="\@" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight=".4">
+
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/new_text_time"
+                    style="@style/materialEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Time"
+                    app:met_floatingLabel="highlight"
+                    app:met_primaryColor="@color/primary" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/new_text_message"
+            style="@style/materialEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.07"
+            android:hint="Message"
+            android:inputType="textMultiLine"
+
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/primary" />
+
+        <Button
+            android:id="@+id/new_text_btn"
+            style="@style/Material.Drawable.Ripple.Touch.Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/primary"
+            android:gravity="center"
+
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:text="Schedule Text"
+            android:textColor="#fff"
+
+            android:onClick="createTextMessage"/>
     </LinearLayout>
-
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/new_text_message"
-        style="@style/materialEditText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.07"
-        android:hint="Message"
-        android:inputType="textMultiLine"
-
-        app:met_floatingLabel="highlight"
-        app:met_primaryColor="@color/primary" />
-
-    <Button
-        android:id="@+id/new_text_btn"
-        style="@style/Material.Drawable.Ripple.Touch.Light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@color/primary"
-        android:gravity="center"
-
-        android:paddingLeft="15dp"
-        android:paddingRight="10dp"
-        android:text="Schedule Text"
-        android:textColor="#fff"
-
-        android:onClick="createTextMessage"/>
-</LinearLayout>
+</RelativeLayout>
