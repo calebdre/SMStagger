@@ -42,12 +42,10 @@ public class CreateTextMessageActivity extends Activity{
     private EditText messageField;
     private ListView contactsListView;
     private ArrayAdapter<String> conactsListAdapter;
-    private Button submitBtn;
 
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
 
-    private ContactsFilter contactsFilter;
     private TextMessageBuilder messageBuilder = new TextMessageBuilder();
 
     private Calendar dateBuilder = Calendar.getInstance();
@@ -57,7 +55,6 @@ public class CreateTextMessageActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_text_message);
 
-        contactsFilter = new ContactsFilter(getContentResolver());
         set_fields();
         initialize_dialogs();
         set_listeners();
@@ -88,7 +85,7 @@ public class CreateTextMessageActivity extends Activity{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 conactsListAdapter.clear();
-                conactsListAdapter.addAll(contactsFilter.filter(s.toString()));
+                conactsListAdapter.addAll(new ContactsFilter(getContentResolver()).filter(s.toString()));
                 contactsListView.setVisibility(View.VISIBLE);
             }
 
@@ -159,7 +156,6 @@ public class CreateTextMessageActivity extends Activity{
 
         phoneField = (EditText) findViewById(R.id.new_text_phone);
         contactField = (EditText) findViewById((R.id.new_text_recipient));
-        submitBtn = (Button) findViewById(R.id.new_text_btn);
         messageField = (EditText) findViewById(R.id.new_text_message);
 
         conactsListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line);
