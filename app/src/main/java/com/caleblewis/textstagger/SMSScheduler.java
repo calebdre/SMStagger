@@ -15,6 +15,7 @@ public class SMSScheduler {
         intent.putExtra("name", message.getName());
         intent.putExtra("number", message.getPhone());
         intent.putExtra("message", message.getMessage());
+        intent.putExtra("id", message.getId());
 
         PendingIntent sender = PendingIntent.getBroadcast(context, 192837, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 

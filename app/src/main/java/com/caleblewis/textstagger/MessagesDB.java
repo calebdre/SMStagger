@@ -28,11 +28,7 @@ public class MessagesDB extends SQLiteOpenHelper {
     public void addTextMessage(TextMessage tm) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put(KEY_NAME, tm.getName());
-        values.put(KEY_PHONE_NUMBER, tm.getPhone());
-        values.put(KEY_MESSAGE, tm.getMessage());
-        values.put(KEY_DATE, tm.getDate());
+        ContentValues values = storeTextMessageValues(tm);
 
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -85,6 +81,32 @@ public class MessagesDB extends SQLiteOpenHelper {
 
         // return contact list
         return messageList;
+    }
+
+    public void updateMessage(TextMessage textMessage){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = storeTextMessageValues(textMessage);
+        db.update(TABLE_NAME, values, KEY_ID + "= ?", new String[] {Long.toString(textMessage.getId())});
+    }
+
+    public void markMessageSent(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_SENT, 1);
+
+        db.update(TABLE_NAME, values, KEY_ID + "=?", new String[]{id});
+    }
+
+    private ContentValues storeTextMessageValues(TextMessage tm){
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_NAME, tm.getName());
+        values.put(KEY_PHONE_NUMBER, tm.getPhone());
+        values.put(KEY_MESSAGE, tm.getMessage());
+        values.put(KEY_DATE, tm.getDate());
+        values.put(KEY_SENT, tm.getSent());
+
+        return values;
     }
 
     @Override

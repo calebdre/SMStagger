@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -71,14 +72,16 @@ public class MainActivity extends Activity {
 
     public void showScheduledMessages() {
         showMessages(getScheduledMessage());
-        scheduleMenuItem.setBackgroundColor(secondary);
-        sentMenuItem.setBackgroundColor(Color.TRANSPARENT);
+
+        TextView t = (TextView) findViewById(R.id.no_messages_text);
+        t.setText("You haven't schedule any texts yet. Click the button below to start!");
     }
 
     public void showSentMessages(){
         showMessages(getSentMessage());
-        sentMenuItem.setBackgroundColor(secondary);
-        scheduleMenuItem.setBackgroundColor(Color.TRANSPARENT);
+
+        TextView t = (TextView) findViewById(R.id.no_messages_text);
+        t.setText("No messages have been sent yet. Check back later!");
     }
 
     public void showMessages(List<TextMessage> messages){
@@ -88,7 +91,7 @@ public class MainActivity extends Activity {
             card.setVisibility(View.GONE);
             textMessageListAdapter.clearMessages();
             textMessageListAdapter.addMessages(messages);
-        }else{
+        } else{
             card.setVisibility(View.VISIBLE);
         }
     }

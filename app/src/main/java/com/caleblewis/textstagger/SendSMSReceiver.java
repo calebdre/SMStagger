@@ -10,9 +10,10 @@ import android.telephony.SmsManager;
 public class SendSMSReceiver extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
-        String name = intent.getExtras().get("name").toString();
-        String number = intent.getExtras().get("number").toString();
-        String message = intent.getExtras().get("message").toString();
+        String name = intent.getStringExtra("name");
+        String number = intent.getStringExtra("number");
+        String message = intent.getStringExtra("message");
+        String id = intent.getStringExtra("id");
 
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(number, null, message, null, null);
@@ -25,5 +26,8 @@ public class SendSMSReceiver extends BroadcastReceiver{
 
         NotificationManager nm = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
         nm.notify(1, noti);
+
+        MessagesDB db = new MessagesDB(context);
+        db.markMessageSent(id);
     }
 }

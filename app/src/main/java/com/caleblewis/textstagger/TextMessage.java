@@ -5,6 +5,15 @@ import java.util.Date;
 public class TextMessage {
     private String name, message, phone, date;
     private long id;
+    private int sent = 0;
+
+    public int getSent() {
+        return sent;
+    }
+
+    public void setSent(int sent) {
+        this.sent = sent;
+    }
 
     public TextMessage(String name, String message, String phone, String date) {
         this.name = name;
