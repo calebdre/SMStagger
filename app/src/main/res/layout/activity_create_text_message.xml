@@ -107,7 +107,7 @@
             style="@style/materialEditText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.07"
+            android:layout_weight="0.17"
             android:hint="Message"
             android:inputType="textMultiLine"
 

@@ -47,7 +47,6 @@ public class CreateTextMessageActivity extends Activity{
         set_fields();
         initialize_dialogs();
         set_listeners();
-
     }
 
     private void set_listeners() {
@@ -155,6 +154,10 @@ public class CreateTextMessageActivity extends Activity{
     }
 
     public void createTextMessage(View view) {
+        if(messageField.getText().toString().isEmpty()){
+            new SnackBarAlert(this).show("Make sure to enter a message!");
+            return;
+        }
         messageBuilder.setMessage(messageField.getText().toString());
         messageBuilder.setDate(new SimpleDateFormat("MMMM dd (EEEE) 'at' h:m a", Locale.US).format(dateBuilder.getTime()));
 

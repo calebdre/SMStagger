@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,6 +17,16 @@ public class TextMessageListAdapter extends RecyclerView.Adapter<TextMessageList
 
     public TextMessageListAdapter(List<TextMessage> tms) {
         this.tms = tms;
+    }
+
+    public TextMessageListAdapter() {this.tms = new ArrayList<TextMessage>();}
+
+    public void addMessages(List<TextMessage> newMessages){
+        this.tms.addAll(newMessages);
+    }
+
+    public void clearMessages(){
+        this.tms.clear();
     }
 
     @Override

@@ -1,63 +1,105 @@
 package com.caleblewis.textstagger;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
+import static com.caleblewis.textstagger.R.color.secondary;
 
-public class MainActivity extends ActionBarActivity {
 
-    private Toolbar toolbar;
+public class MainActivity extends Activity {
+
+    private TextMessageListAdapter textMessageListAdapter;
+    private LinearLayout scheduleMenuItem;
+    private LinearLayout sentMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
-        setSupportActionBar(toolbar);
-
         String snackBarText = getIntent().getStringExtra("snackbarMessage");
         if(snackBarText != null){
             new SnackBarAlert(this).show(snackBarText);
         }
 
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.text_message_recycler_view);
+        set_fields();
+        set_event_listeners();
+
+        textMessageListAdapter = new TextMessageListAdapter();
+
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.message_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(textMessageListAdapter);
 
-        MessagesDB db = new MessagesDB(this);
-        db.onUpgrade(db.getWritableDatabase(), 1, 2); // reset the db
+        showScheduledMessages();
+    }
 
-        List<TextMessage> messages = db.getScheduledMessages();
+    private void set_event_listeners() {
+        scheduleMenuItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showScheduledMessages();
+            }
+        });
 
-        CardView card = (CardView) findViewById(R.id.no_messages);
+        sentMenuItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSentMessages();
+            }
+        });
+    }
 
-        if(messages.size() != 0){
-            card.setVisibility(View.GONE);
-            mRecyclerView.setAdapter(new TextMessageListAdapter(messages));
-        }
-
+    private void set_fields() {
+        scheduleMenuItem = (LinearLayout) findViewById(R.id.scheduled_menu_item);
+        sentMenuItem = (LinearLayout) findViewById(R.id.sent_menu_item);
     }
 
     public void startCreateNewTextMessageActivity(View view) {
         Intent newTextMessageIntent = new Intent(this, CreateTextMessageActivity.class);
         this.startActivity(newTextMessageIntent);
+    }
+
+    public void showScheduledMessages() {
+        showMessages(getScheduledMessage());
+        scheduleMenuItem.setBackgroundColor(secondary);
+        sentMenuItem.setBackgroundColor(Color.TRANSPARENT);
+    }
+
+    public void showSentMessages(){
+        showMessages(getSentMessage());
+        sentMenuItem.setBackgroundColor(secondary);
+        scheduleMenuItem.setBackgroundColor(Color.TRANSPARENT);
+    }
+
+    public void showMessages(List<TextMessage> messages){
+        CardView card = (CardView) findViewById(R.id.no_messages);
+
+        if(messages.size() != 0){
+            card.setVisibility(View.GONE);
+            textMessageListAdapter.clearMessages();
+            textMessageListAdapter.addMessages(messages);
+        }else{
+            card.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public List<TextMessage> getSentMessage(){
+        MessagesDB db = new MessagesDB(this);
+        return db.getSentMessages();
+    }
+
+    public List<TextMessage> getScheduledMessage(){
+        MessagesDB db = new MessagesDB(this);
+        return db.getScheduledMessages();
     }
 }
