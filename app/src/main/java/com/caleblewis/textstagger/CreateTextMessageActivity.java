@@ -174,9 +174,8 @@ public class CreateTextMessageActivity extends Activity{
         messageBuilder.setDate(new SimpleDateFormat("MMMM dd (EEEE) 'at' h:m a", Locale.US).format(dateBuilder.getTime()));
 
         try {
-            TextMessage t = messageBuilder.build();
             MessagesDB db = new MessagesDB(this);
-            db.addTextMessage(t);
+            db.addTextMessage(messageBuilder.build());
 
             Toast.makeText(this, "Your message has been created!", Toast.LENGTH_SHORT).show();
 

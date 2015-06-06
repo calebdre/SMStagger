@@ -11,9 +11,6 @@ import java.util.List;
 
 public class MessagesDB extends SQLiteOpenHelper {
 
-    SQLiteDatabase conn;
-    Context context;
-
     private static final String DATABASE_NAME = "TextMessage";
     private static final String TABLE_NAME = "messages";
 

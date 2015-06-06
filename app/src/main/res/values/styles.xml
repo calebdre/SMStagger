@@ -8,4 +8,9 @@
     <style name="materialEditText" >
         <item name="android:layout_marginTop">15dp</item>
     </style>
+
+    <style name="card_layout">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:padding">20dp</item>
+    </style>
 </resources>

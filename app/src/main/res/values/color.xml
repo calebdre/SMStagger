@@ -3,4 +3,6 @@
     <color name="primary">#2196f3</color>
     <color name="secondary">#448aff</color>
     <color name="ternary">#2979ff</color>
+    <color name="text_default">#333</color>
+    <color name="text_muted">#999</color>
 </resources>

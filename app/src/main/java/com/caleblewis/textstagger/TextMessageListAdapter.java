@@ -31,7 +31,7 @@ public class TextMessageListAdapter extends RecyclerView.Adapter<TextMessageList
         holder.name.setText(tm.getName());
         holder.phone.setText(tm.getPhone());
         holder.message.setText(tm.getMessage());
-        holder.date.setText(tm.getMessage());
+        holder.date.setText(tm.getDate());
     }
 
     @Override
