@@ -19,6 +19,7 @@ public class MessagesDB extends SQLiteOpenHelper {
     private static final String KEY_PHONE_NUMBER = "number";
     private static final String KEY_MESSAGE = "message";
     private static final String KEY_DATE = "date_string";
+    private static final String KEY_SENT = "sent";
 
     public MessagesDB(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -43,11 +44,23 @@ public class MessagesDB extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<TextMessage> getMessages() {
-        List<TextMessage> messageList = new ArrayList<TextMessage>();
-        // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+    public List<TextMessage> getSentMessages(){
+        return getMessages(true);
+    }
 
+    public List<TextMessage> getScheduledMessages() {
+        return getMessages(false);
+    }
+
+    public List<TextMessage> getMessages(boolean sent){
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME + " where " + KEY_SENT + " =";
+        if(sent){
+            selectQuery += 1;
+        }else{
+            selectQuery += 0;
+        }
+
+        List<TextMessage> messageList = new ArrayList<TextMessage>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -81,7 +94,8 @@ public class MessagesDB extends SQLiteOpenHelper {
                 + KEY_NAME + " VARCHAR,"
                 + KEY_PHONE_NUMBER + " VARCHAR,"
                 + KEY_MESSAGE + " TEXT,"
-                + KEY_DATE + " VARCHAR"
+                + KEY_DATE + " VARCHAR,"
+                + KEY_SENT + " INREGER default 0"
                 + ")";
         db.execSQL(createTableQuery);
     }
