@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -23,22 +24,19 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MessagesDB db = new MessagesDB(this);
-        db.createDB();
-
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.text_message_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ArrayList<HashMap<String, String>> messagesFromDb = db.getMessages();
-        List<TextMessage> messages = new ArrayList<>();
+        MessagesDB db = new MessagesDB(this);
 
+        List<TextMessage> messages = db.getMessages();
 
-        for(HashMap<String, String> message: messagesFromDb){
-            TextMessage t = new TextMessage(message.get("name"), message.get("message"), message.get("phone"), message.get("date"));
-            messages.add(t);
+        CardView card = (CardView) findViewById(R.id.no_messages);
+
+        if(messages.size() != 0){
+            card.setVisibility(View.GONE);
+            mRecyclerView.setAdapter(new TextMessageListAdapter(messages));
         }
-
-        mRecyclerView.setAdapter(new TextMessageListAdapter(messages));
     }
 
 
@@ -65,7 +63,7 @@ public class MainActivity extends Activity {
     }
 
     public void startCreateNewTextMessageActivity(View view) {
-        Intent myIntent = new Intent(this, CreateTextMessageActivity.class);
-        this.startActivity(myIntent);
+        Intent newTextMessageIntent = new Intent(this, CreateTextMessageActivity.class);
+        this.startActivity(newTextMessageIntent);
     }
 }

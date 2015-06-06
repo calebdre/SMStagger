@@ -3,14 +3,20 @@ package com.caleblewis.textstagger;
 import java.util.Date;
 
 public class TextMessageBuilder {
-    private String name, message, phone, date;
+    private String name;
+    private String message;
+    private String phone;
+    private String date;
+    private long id;
 
     public TextMessage build() throws IncompleteTextMessageException {
         if(name != null && message != null && phone != null && date != null)
-            return new TextMessage(name, message, phone, date);
+            return new TextMessage(name, message, phone, date, id);
 
         throw new IncompleteTextMessageException();
     }
+
+    public void setId(long id) {this.id = id;}
 
     public void setName(String name) {
         this.name = name;

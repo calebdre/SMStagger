@@ -13,6 +13,14 @@ public class TextMessage {
         this.date = date;
     }
 
+    public TextMessage(String name, String message, String phone, String date, long id) {
+        this.name = name;
+        this.message = message;
+        this.phone = phone;
+        this.date = date;
+        this.id = id;
+    }
+
     public long getId() {return id;}
 
     public void setId(long id) {this.id = id; }

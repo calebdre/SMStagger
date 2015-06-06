@@ -1,74 +1,97 @@
 package com.caleblewis.textstagger;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
+import android.database.sqlite.SQLiteOpenHelper;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
-public class MessagesDB {
+public class MessagesDB extends SQLiteOpenHelper {
 
     SQLiteDatabase conn;
     Context context;
 
+    private static final String DATABASE_NAME = "TextMessage";
+    private static final String TABLE_NAME = "messages";
+
+    private static final String KEY_ID = "id";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_PHONE_NUMBER = "number";
+    private static final String KEY_MESSAGE = "message";
+    private static final String KEY_DATE = "date_string";
+
     public MessagesDB(Context context) {
-        this.context = context;
-        this.conn = this.context.openOrCreateDatabase("textMessages", this.context.MODE_PRIVATE, null);
+        super(context, DATABASE_NAME, null, 1);
     }
 
-    public void createDB(){
-        conn.execSQL("CREATE TABLE IF NOT EXISTS messages (" +
-                "id integer primary key," +
-                "name VARCHAR," +
-                "number VARCHAR" +
-                "message VARCHAR" +
-                "date VARCHAR" +
-                ");");
+    public void addTextMessage(TextMessage tm) {
+        SQLiteDatabase db = this.getWritableDatabase();
 
-        File database = context.getDatabasePath("TextMessages.db");
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, tm.getName());
+        values.put(KEY_PHONE_NUMBER, tm.getPhone());
+        values.put(KEY_MESSAGE, tm.getMessage());
+        values.put(KEY_DATE, tm.getDate());
+
+        db.insert(TABLE_NAME, null, values);
+        db.close();
     }
 
-    public long addTextMessage(String name, String number, String message, String date){
-        SQLiteStatement statement = conn.compileStatement("insert into messages (name, number, message, date) values (?, ?, ?, ?);");
-        statement.bindAllArgsAsStrings(new String[]{name, number, message, date});
-        return statement.executeInsert();
+    public void deleteMessage(TextMessage textMessage) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, KEY_ID + " = ?", new String[]{String.valueOf(textMessage.getId())});
+        db.close();
     }
 
-    public void deleteMessage(long id){
-        conn.execSQL("DELETE FROM messages WHERE id = " + id + ";");
-    }
+    public List<TextMessage> getMessages() {
+        List<TextMessage> messageList = new ArrayList<TextMessage>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
 
-    public ArrayList<HashMap<String, String>> getMessages(){
-        Cursor cursor = conn.rawQuery("SELECT * FROM messages", null);
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
 
-        int idColumn = cursor.getColumnIndex("id");
-        int nameColumn = cursor.getColumnIndex("name");
-        int numberColumn= cursor.getColumnIndex("number");
-        int messageColumn= cursor.getColumnIndex("message");
-        int dateColumn= cursor.getColumnIndex("date");
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                TextMessageBuilder tm = new TextMessageBuilder();
+                tm.setId(Integer.parseInt(cursor.getString(0)));
+                tm.setName(cursor.getString(1));
+                tm.setPhone(cursor.getString(2));
+                tm.setMessage(cursor.getString(3));
+                tm.setDate(cursor.getString(4));
+                // Adding contact to list
+                try {
+                    messageList.add(tm.build());
+                } catch (IncompleteTextMessageException e) {
+                    e.printStackTrace();
+                }
 
-        cursor.moveToFirst();
-
-        ArrayList<HashMap<String, String>> messages = new ArrayList<HashMap<String, String>>();
-
-        if(cursor != null && (cursor.getCount() > 0)){
-            do{
-                HashMap<String, String> message = new HashMap<String, String>();
-
-                message.put("id", cursor.getString(idColumn));
-                message.put("name", cursor.getString(nameColumn));
-                message.put("number", cursor.getString(numberColumn));
-                message.put("message", cursor.getString(messageColumn));
-                message.put("date", cursor.getString(dateColumn));
-
-                messages.add(message);
-            }while(cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
 
-        return messages;
+        // return contact list
+        return messageList;
     }
 
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
+                + KEY_ID + " INTEGER PRIMARY KEY,"
+                + KEY_NAME + " VARCHAR,"
+                + KEY_PHONE_NUMBER + " VARCHAR,"
+                + KEY_MESSAGE + " TEXT,"
+                + KEY_DATE + " VARCHAR"
+                + ")";
+        db.execSQL(createTableQuery);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+    }
 }

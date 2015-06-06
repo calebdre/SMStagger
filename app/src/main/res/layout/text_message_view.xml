@@ -19,21 +19,25 @@
             <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/tmName"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Name"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/tmPhone"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="770 881 0074"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/tmMessage"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="This is the message that will be sent. Hi mom!"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/tmDate"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text=""/>
         </LinearLayout>
     </android.support.v7.widget.CardView>

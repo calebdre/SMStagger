@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -174,7 +175,14 @@ public class CreateTextMessageActivity extends Activity{
 
         try {
             TextMessage t = messageBuilder.build();
+            MessagesDB db = new MessagesDB(this);
+            db.addTextMessage(t);
+
             Toast.makeText(this, "Your message has been created!", Toast.LENGTH_SHORT).show();
+
+            Intent viewAllMessagesIntent = new Intent(this, MainActivity.class);
+            this.startActivity(viewAllMessagesIntent);
+
         } catch (IncompleteTextMessageException e) {
             Toast.makeText(this, "Please fill out all of the fields.", Toast.LENGTH_SHORT).show();
         }
