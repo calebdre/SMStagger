@@ -4,8 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -22,6 +20,5 @@ public class SMSScheduler {
 
         AlarmManager am = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
-        Toast.makeText(context, "Text message was scheduled", Toast.LENGTH_LONG).show();
     }
 }

@@ -27,10 +27,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String snackBarText = getIntent().getStringExtra("snackbarMessage");
+        if(snackBarText != null){
+            new SnackBarAlert(this).show(snackBarText);
+        }
+
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.text_message_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         MessagesDB db = new MessagesDB(this);
+//        db.onUpgrade(db.getWritableDatabase(), 1, 2); // reset the db
 
         List<TextMessage> messages = db.getMessages();
 

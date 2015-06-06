@@ -19,7 +19,7 @@
     <ListView
         android:id="@+id/contact_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"/>
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/new_text_phone"
@@ -116,5 +116,4 @@
         android:textColor="#fff"
 
         android:onClick="createTextMessage"/>
-
 </LinearLayout>

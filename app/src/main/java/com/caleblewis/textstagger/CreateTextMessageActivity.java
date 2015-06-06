@@ -1,34 +1,23 @@
 package com.caleblewis.textstagger;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -174,15 +163,14 @@ public class CreateTextMessageActivity extends Activity{
             TextMessage textMessage = messageBuilder.build();
             db.addTextMessage(textMessage);
 
-            Toast.makeText(this, "Your message has been scheduled!", Toast.LENGTH_SHORT).show();
-
             new SMSScheduler().schedule(this, textMessage, dateBuilder);
 
             Intent viewAllMessagesIntent = new Intent(this, MainActivity.class);
+            viewAllMessagesIntent.putExtra("snackbarMessage", "Your message has been scheduled");
             this.startActivity(viewAllMessagesIntent);
 
         } catch (IncompleteTextMessageException e) {
-            Toast.makeText(this, "Please fill out all of the fields.", Toast.LENGTH_SHORT).show();
+            new SnackBarAlert(this).show("Please fill out all of the fields.");
         }
     }
 }

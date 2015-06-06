@@ -6,7 +6,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.SmsManager;
-import android.widget.Toast;
 
 public class SendSMSReceiver extends BroadcastReceiver{
     @Override
@@ -17,8 +16,6 @@ public class SendSMSReceiver extends BroadcastReceiver{
 
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(number, null, message, null, null);
-
-        Toast.makeText(context, "Message was send", Toast.LENGTH_LONG).show();
 
         Notification noti = new Notification.Builder(context)
                 .setContentTitle("Scheduled Text Message Sent")
