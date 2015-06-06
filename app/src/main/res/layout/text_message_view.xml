@@ -51,8 +51,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="17dp"
                 android:textColor="@color/text_default"
-                android:maxLength="60"
-                android:ellipsize="marquee"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:text="This is the message that will be sent. Hi mom!"/>
 
             <TextView

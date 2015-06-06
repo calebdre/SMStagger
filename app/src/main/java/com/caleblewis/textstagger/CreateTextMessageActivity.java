@@ -171,9 +171,12 @@ public class CreateTextMessageActivity extends Activity{
 
         try {
             MessagesDB db = new MessagesDB(this);
-            db.addTextMessage(messageBuilder.build());
+            TextMessage textMessage = messageBuilder.build();
+            db.addTextMessage(textMessage);
 
-            Toast.makeText(this, "Your message has been created!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Your message has been scheduled!", Toast.LENGTH_SHORT).show();
+
+            new SMSScheduler().schedule(this, textMessage, dateBuilder);
 
             Intent viewAllMessagesIntent = new Intent(this, MainActivity.class);
             this.startActivity(viewAllMessagesIntent);
