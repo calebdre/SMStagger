@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.textstagger.Utils;
 
 import android.content.ContentResolver;
 import android.content.Context;

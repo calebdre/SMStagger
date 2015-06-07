@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.textstagger.Models;
 
 import java.util.Date;
 

@@ -1,6 +1,6 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.textstagger.Models;
 
-import java.util.Date;
+import com.caleblewis.textstagger.Exceptions.IncompleteTextMessageException;
 
 public class TextMessageBuilder {
     private String name;

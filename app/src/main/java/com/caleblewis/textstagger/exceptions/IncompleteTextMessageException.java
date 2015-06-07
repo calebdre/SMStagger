@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.textstagger.Exceptions;
 
 public class IncompleteTextMessageException extends Throwable {
     public IncompleteTextMessageException(){

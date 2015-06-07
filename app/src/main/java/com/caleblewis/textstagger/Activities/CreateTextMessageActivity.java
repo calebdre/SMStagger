@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.textstagger.Activities;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -15,6 +15,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TimePicker;
+
+import com.caleblewis.textstagger.Utils.ContactsFilter;
+import com.caleblewis.textstagger.MessagesDB;
+import com.caleblewis.textstagger.R;
+import com.caleblewis.textstagger.SMS.SMSScheduler;
+import com.caleblewis.textstagger.Utils.SnackBarAlert;
+import com.caleblewis.textstagger.Models.TextMessage;
+import com.caleblewis.textstagger.Models.TextMessageBuilder;
+import com.caleblewis.textstagger.Exceptions.IncompleteTextMessageException;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

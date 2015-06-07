@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.textstagger.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.caleblewis.textstagger.Models.TextMessage;
+import com.caleblewis.textstagger.R;
+
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 

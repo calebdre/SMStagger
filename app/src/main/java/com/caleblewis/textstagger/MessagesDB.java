@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.caleblewis.textstagger.Models.TextMessage;
+import com.caleblewis.textstagger.Models.TextMessageBuilder;
+import com.caleblewis.textstagger.Exceptions.IncompleteTextMessageException;
+
 import java.util.ArrayList;
 import java.util.List;
 

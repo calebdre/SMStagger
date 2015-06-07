@@ -1,9 +1,11 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.textstagger.SMS;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+
+import com.caleblewis.textstagger.Models.TextMessage;
 
 import java.util.Calendar;
 

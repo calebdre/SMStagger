@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.textstagger.Utils;
 
 import android.app.Activity;
 import android.graphics.Color;

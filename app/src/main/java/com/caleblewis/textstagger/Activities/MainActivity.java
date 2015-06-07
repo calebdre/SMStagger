@@ -1,8 +1,7 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.textstagger.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,9 +10,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.List;
+import com.caleblewis.textstagger.MessagesDB;
+import com.caleblewis.textstagger.R;
+import com.caleblewis.textstagger.Utils.SnackBarAlert;
+import com.caleblewis.textstagger.Models.TextMessage;
+import com.caleblewis.textstagger.Adapters.TextMessageListAdapter;
 
-import static com.caleblewis.textstagger.R.color.secondary;
+import java.util.List;
 
 
 public class MainActivity extends Activity {
