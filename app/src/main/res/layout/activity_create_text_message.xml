@@ -13,11 +13,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/tool_bar"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical"
-        android:weightSum="1"
-        android:layout_below="@id/tool_bar">
+        android:weightSum="1">
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/new_text_recipient"
@@ -32,7 +32,7 @@
         <ListView
             android:id="@+id/contact_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/new_text_phone"
@@ -123,11 +123,11 @@
             android:background="@color/primary"
             android:gravity="center"
 
+            android:onClick="createTextMessage"
             android:paddingLeft="15dp"
             android:paddingRight="10dp"
             android:text="Schedule Text"
-            android:textColor="#fff"
 
-            android:onClick="createTextMessage"/>
+            android:textColor="#fff" />
     </LinearLayout>
 </RelativeLayout>

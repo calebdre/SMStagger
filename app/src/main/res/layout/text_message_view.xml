@@ -1,60 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="4dp"
-    android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp">
+    android:layout_marginRight="15dp"
+    android:layout_marginTop="10dp"
+    card_view:cardCornerRadius="4dp">
 
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/card_layout"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tmName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Name"
+            android:textColor="@color/text_default"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tmMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="This is the message that will be sent. Hi mom!"
+            android:textColor="@color/text_default"
+            android:textSize="17dp" />
 
-            android:orientation="vertical"
-            style="@style/card_layout">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:id="@+id/tmName"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Name"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                android:textColor="@color/text_default"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:id="@+id/tmMessage"
-                android:layout_height="wrap_content"
-                android:textSize="17dp"
-                android:textColor="@color/text_default"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:layout_marginTop="5dp"
-                android:text="This is the message that will be sent. Hi mom!"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:id="@+id/tmDate"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/text_muted"
-                android:text="MMMM dd (EEEE) 'at' h:m a"/>
+        <TextView
+            android:id="@+id/tmDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="MMMM dd (EEEE) 'at' h:m a"
+            android:textColor="@color/text_muted"
+            android:textSize="15dp" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:id="@+id/tmPhone"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_muted"
-                android:text="770 881 0074"/>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/tmPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="770 881 0074"
+            android:textColor="@color/text_muted" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

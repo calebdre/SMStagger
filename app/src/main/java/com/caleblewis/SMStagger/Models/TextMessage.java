@@ -5,14 +5,6 @@ public class TextMessage {
     private long id;
     private int sent = 0;
 
-    public int getSent() {
-        return sent;
-    }
-
-    public void setSent(int sent) {
-        this.sent = sent;
-    }
-
     public TextMessage(String name, String message, String phone, String date) {
         this.name = name;
         this.message = message;
@@ -26,6 +18,14 @@ public class TextMessage {
         this.phone = phone;
         this.date = date;
         this.id = id;
+    }
+
+    public int getSent() {
+        return sent;
+    }
+
+    public void setSent(int sent) {
+        this.sent = sent;
     }
 
     public long getId() {return id;}

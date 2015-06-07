@@ -1,17 +1,16 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
     android:background="@color/primary"
     android:elevation="6dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:layout_marginBottom="5dp">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Message"
         android:textColor="#fff"
-        android:textSize="21dp"
-        />
+        android:textSize="21dp" />
 
 </android.support.v7.widget.Toolbar>
