@@ -6,12 +6,14 @@
     android:padding="0dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:layout_marginBottom="5dp">
+
     <TextView
+        android:id="@+id/menu_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Messages"
+        android:text="Scheduled Messages"
         android:textColor="#fff"
-        android:textSize="21dp"
+        android:textSize="16dp"
         />
 
     <LinearLayout
@@ -21,18 +23,18 @@
         android:gravity="right">
         <LinearLayout
             android:id="@+id/scheduled_menu_item"
-            android:background="@color/secondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Scheduled"
                 android:textColor="#fff"
+                android:textSize="12dp"
                 android:layout_gravity="center"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="5dp"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,16 +43,17 @@
 
         <LinearLayout
             android:id="@+id/sent_menu_item"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sent"
                 android:textColor="#fff"
+                android:textSize="12dp"
                 android:layout_marginRight="10dp"
                 android:layout_gravity="center"/>
 

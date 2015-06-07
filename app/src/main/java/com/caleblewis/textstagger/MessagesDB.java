@@ -25,13 +25,15 @@ public class MessagesDB extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
     }
 
-    public void addTextMessage(TextMessage tm) {
+    public long addTextMessage(TextMessage tm) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = storeTextMessageValues(tm);
 
-        db.insert(TABLE_NAME, null, values);
+        long id = db.insert(TABLE_NAME, null, values);
         db.close();
+
+        return id;
     }
 
     public void deleteMessage(TextMessage textMessage) {

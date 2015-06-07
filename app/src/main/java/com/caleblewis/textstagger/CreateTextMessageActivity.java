@@ -164,8 +164,9 @@ public class CreateTextMessageActivity extends Activity{
         try {
             MessagesDB db = new MessagesDB(this);
             TextMessage textMessage = messageBuilder.build();
-            db.addTextMessage(textMessage);
+            long tmId = db.addTextMessage(textMessage);
 
+            textMessage.setId(tmId);
             new SMSScheduler().schedule(this, textMessage, dateBuilder);
 
             Intent viewAllMessagesIntent = new Intent(this, MainActivity.class);

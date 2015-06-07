@@ -73,12 +73,18 @@ public class MainActivity extends Activity {
     public void showScheduledMessages() {
         showMessages(getScheduledMessage());
 
+        TextView r = (TextView) findViewById(R.id.menu_title);
+        r.setText("Scheduled Messages");
+
         TextView t = (TextView) findViewById(R.id.no_messages_text);
         t.setText("You haven't schedule any texts yet. Click the button below to start!");
     }
 
     public void showSentMessages(){
         showMessages(getSentMessage());
+
+        TextView r = (TextView) findViewById(R.id.menu_title);
+        r.setText("Sent Messages");
 
         TextView t = (TextView) findViewById(R.id.no_messages_text);
         t.setText("No messages have been sent yet. Check back later!");
@@ -92,6 +98,7 @@ public class MainActivity extends Activity {
             textMessageListAdapter.clearMessages();
             textMessageListAdapter.addMessages(messages);
         } else{
+            textMessageListAdapter.clearMessages();
             card.setVisibility(View.VISIBLE);
         }
     }

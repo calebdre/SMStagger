@@ -35,7 +35,7 @@
                     android:layout_gravity="center"
                     android:textSize="20dp"
                     android:textColor="@color/text_muted"
-                    android:text="You haven't schedule any texts yet. Click the button below to start!"/>
+                    android:text="You haven't schedule any texts yet. Tap the button below to start!"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

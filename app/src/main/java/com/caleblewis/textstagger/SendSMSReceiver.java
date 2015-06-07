@@ -9,18 +9,31 @@ import android.telephony.SmsManager;
 
 public class SendSMSReceiver extends BroadcastReceiver{
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(Context context, Intent intent){
         String name = intent.getStringExtra("name");
         String number = intent.getStringExtra("number");
         String message = intent.getStringExtra("message");
-        String id = intent.getStringExtra("id");
+        long id = intent.getLongExtra("id", -1);
 
-        SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage(number, null, message, null, null);
+
+        if(id == -1){
+            Notification noti = new Notification.Builder(context)
+                    .setContentTitle("Scheduled Text Message Sent")
+                    .setContentText("Could not send scheduled SMS")
+                    .setSmallIcon(R.drawable.ic_action_drop)
+                    .build();
+
+            NotificationManager nm = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+            nm.notify(1, noti);
+            return;
+        }
+
+//        SmsManager smsManager = SmsManager.getDefault();
+//        smsManager.sendTextMessage(number, null, message, null, null);
 
         Notification noti = new Notification.Builder(context)
                 .setContentTitle("Scheduled Text Message Sent")
-                .setContentText("The message you scheduled for " + name + " has been sent.")
+                .setContentText("Scheduled message for " + name + " was sent.")
                 .setSmallIcon(R.drawable.ic_action_drop)
                 .build();
 
@@ -28,6 +41,6 @@ public class SendSMSReceiver extends BroadcastReceiver{
         nm.notify(1, noti);
 
         MessagesDB db = new MessagesDB(context);
-        db.markMessageSent(id);
+        db.markMessageSent(Long.toString(id));
     }
 }

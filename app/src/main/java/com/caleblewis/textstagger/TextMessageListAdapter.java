@@ -23,10 +23,12 @@ public class TextMessageListAdapter extends RecyclerView.Adapter<TextMessageList
 
     public void addMessages(List<TextMessage> newMessages){
         this.tms.addAll(newMessages);
+        this.notifyDataSetChanged();
     }
 
     public void clearMessages(){
         this.tms.clear();
+        this.notifyDataSetChanged();
     }
 
     @Override
