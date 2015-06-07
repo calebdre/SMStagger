@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.SMStagger;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

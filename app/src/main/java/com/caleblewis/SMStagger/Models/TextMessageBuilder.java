@@ -1,6 +1,6 @@
-package com.caleblewis.textstagger.Models;
+package com.caleblewis.SMStagger.Models;
 
-import com.caleblewis.textstagger.Exceptions.IncompleteTextMessageException;
+import com.caleblewis.SMStagger.Exceptions.IncompleteTextMessageException;
 
 public class TextMessageBuilder {
     private String name;

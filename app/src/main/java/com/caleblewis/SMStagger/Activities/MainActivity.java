@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger.Activities;
+package com.caleblewis.SMStagger.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.caleblewis.textstagger.MessagesDB;
-import com.caleblewis.textstagger.R;
-import com.caleblewis.textstagger.Utils.SnackBarAlert;
-import com.caleblewis.textstagger.Models.TextMessage;
-import com.caleblewis.textstagger.Adapters.TextMessageListAdapter;
+import com.caleblewis.SMStagger.MessagesDB;
+import com.caleblewis.SMStagger.R;
+import com.caleblewis.SMStagger.Utils.SnackBarAlert;
+import com.caleblewis.SMStagger.Models.TextMessage;
+import com.caleblewis.SMStagger.Adapters.TextMessageListAdapter;
 
 import java.util.List;
 

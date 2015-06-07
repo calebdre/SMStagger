@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger.Activities;
+package com.caleblewis.SMStagger.Activities;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -16,18 +16,17 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TimePicker;
 
-import com.caleblewis.textstagger.Utils.ContactsFilter;
-import com.caleblewis.textstagger.MessagesDB;
-import com.caleblewis.textstagger.R;
-import com.caleblewis.textstagger.SMS.SMSScheduler;
-import com.caleblewis.textstagger.Utils.SnackBarAlert;
-import com.caleblewis.textstagger.Models.TextMessage;
-import com.caleblewis.textstagger.Models.TextMessageBuilder;
-import com.caleblewis.textstagger.Exceptions.IncompleteTextMessageException;
+import com.caleblewis.SMStagger.Utils.ContactsFilter;
+import com.caleblewis.SMStagger.MessagesDB;
+import com.caleblewis.SMStagger.R;
+import com.caleblewis.SMStagger.SMS.SMSScheduler;
+import com.caleblewis.SMStagger.Utils.SnackBarAlert;
+import com.caleblewis.SMStagger.Models.TextMessage;
+import com.caleblewis.SMStagger.Models.TextMessageBuilder;
+import com.caleblewis.SMStagger.Exceptions.IncompleteTextMessageException;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

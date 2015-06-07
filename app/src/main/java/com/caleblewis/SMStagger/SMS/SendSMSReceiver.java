@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger.SMS;
+package com.caleblewis.SMStagger.SMS;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -7,8 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.telephony.SmsManager;
 
-import com.caleblewis.textstagger.MessagesDB;
-import com.caleblewis.textstagger.R;
+import com.caleblewis.SMStagger.MessagesDB;
+import com.caleblewis.SMStagger.R;
 
 public class SendSMSReceiver extends BroadcastReceiver{
     @Override

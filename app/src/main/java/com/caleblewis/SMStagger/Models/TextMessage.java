@@ -1,6 +1,4 @@
-package com.caleblewis.textstagger.Models;
-
-import java.util.Date;
+package com.caleblewis.SMStagger.Models;
 
 public class TextMessage {
     private String name, message, phone, date;

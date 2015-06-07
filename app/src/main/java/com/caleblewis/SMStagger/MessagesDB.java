@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger;
+package com.caleblewis.SMStagger;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,9 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.caleblewis.textstagger.Models.TextMessage;
-import com.caleblewis.textstagger.Models.TextMessageBuilder;
-import com.caleblewis.textstagger.Exceptions.IncompleteTextMessageException;
+import com.caleblewis.SMStagger.Models.TextMessage;
+import com.caleblewis.SMStagger.Models.TextMessageBuilder;
+import com.caleblewis.SMStagger.Exceptions.IncompleteTextMessageException;
 
 import java.util.ArrayList;
 import java.util.List;

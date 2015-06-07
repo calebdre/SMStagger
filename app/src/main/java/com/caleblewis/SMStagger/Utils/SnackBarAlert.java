@@ -1,4 +1,4 @@
-package com.caleblewis.textstagger.Utils;
+package com.caleblewis.SMStagger.Utils;
 
 import android.app.Activity;
 import android.graphics.Color;

@@ -1,7 +1,6 @@
-package com.caleblewis.textstagger.Utils;
+package com.caleblewis.SMStagger.Utils;
 
 import android.content.ContentResolver;
-import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 
