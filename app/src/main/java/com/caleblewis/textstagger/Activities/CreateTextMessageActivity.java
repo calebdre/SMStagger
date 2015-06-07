@@ -27,6 +27,7 @@ import com.caleblewis.textstagger.Exceptions.IncompleteTextMessageException;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -131,12 +132,14 @@ public class CreateTextMessageActivity extends Activity{
         timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                String am_pm = (hourOfDay > 12) ? "pm" : "am";
-                if(am_pm.equals("pm")) hourOfDay -= 12;
-                String str_minute = (minute == 0) ?  "00" : Integer.toString(minute);;
+                String str_minute = (minute == 0) ?  "00" : Integer.toString(minute);
+                if(minute < 10) str_minute = "0" + Integer.toString(minute);
 
                 dateBuilder.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 dateBuilder.set(Calendar.MINUTE, minute);
+
+                String am_pm = (hourOfDay > 12) ? "pm" : "am";
+                if(am_pm.equals("pm")) hourOfDay -= 12;
 
                 timeText.setText(hourOfDay + ":" + str_minute + " " + am_pm) ;
             }
@@ -176,7 +179,9 @@ public class CreateTextMessageActivity extends Activity{
             long tmId = db.addTextMessage(textMessage);
 
             textMessage.setId(tmId);
-            new SMSScheduler().schedule(this, textMessage, dateBuilder);
+            long diff = dateBuilder.getTimeInMillis() - new Date().getTime();
+
+            new SMSScheduler().schedule(this, textMessage, diff);
 
             Intent viewAllMessagesIntent = new Intent(this, MainActivity.class);
             viewAllMessagesIntent.putExtra("snackbarMessage", "Your message has been scheduled");

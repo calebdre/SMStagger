@@ -11,7 +11,7 @@ import java.util.Calendar;
 
 public class SMSScheduler {
 
-    public void schedule(Context context, TextMessage message, Calendar calendar){
+    public void schedule(Context context, TextMessage message, long timeToKill){
         Intent intent = new Intent(context, SendSMSReceiver.class);
 
         intent.putExtra("name", message.getName());
@@ -19,9 +19,9 @@ public class SMSScheduler {
         intent.putExtra("message", message.getMessage());
         intent.putExtra("id", message.getId());
 
-        PendingIntent sender = PendingIntent.getBroadcast(context, 192837, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent sender = PendingIntent.getBroadcast(context, (int) message.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         AlarmManager am = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+        am.set(AlarmManager.RTC_WAKEUP, timeToKill, sender);
     }
 }
