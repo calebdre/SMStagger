@@ -31,12 +31,12 @@ public class SendSMSReceiver extends BroadcastReceiver{
             return;
         }
 
-//        SmsManager smsManager = SmsManager.getDefault();
-//        smsManager.sendTextMessage(number, null, message, null, null);
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(number, null, message, null, null);
 
         Notification noti = new Notification.Builder(context)
-                .setContentTitle("Scheduled Text Message Sent")
-                .setContentText("Scheduled message for " + name + " was sent.")
+                .setContentTitle("SMS Sent")
+                .setContentText("Scheduled message for " + name.replaceAll("\\s+","") + " was sent.")
                 .setSmallIcon(R.drawable.ic_action_drop)
                 .build();
 

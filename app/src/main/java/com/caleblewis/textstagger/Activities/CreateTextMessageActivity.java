@@ -179,9 +179,8 @@ public class CreateTextMessageActivity extends Activity{
             long tmId = db.addTextMessage(textMessage);
 
             textMessage.setId(tmId);
-            long diff = dateBuilder.getTimeInMillis() - new Date().getTime();
 
-            new SMSScheduler().schedule(this, textMessage, diff);
+            new SMSScheduler().schedule(this, textMessage, dateBuilder.getTimeInMillis());
 
             Intent viewAllMessagesIntent = new Intent(this, MainActivity.class);
             viewAllMessagesIntent.putExtra("snackbarMessage", "Your message has been scheduled");
