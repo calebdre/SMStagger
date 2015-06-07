@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TextStagger</string>
+    <string name="app_name">SMStagger</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 </resources>
