@@ -24,7 +24,7 @@
             style="@style/materialEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/recipient"
+            android:hint="@string/recipient_text_field_label"
 
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/primary" />
@@ -40,7 +40,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/phone_number"
+            android:hint="@string/phone_number_hint"
             android:inputType="phone"
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/primary" />
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:gravity="center"
-                    android:hint="@string/date"
+                    android:hint="@string/date_hint"
                     app:met_floatingLabel="highlight"
                     app:met_primaryColor="@color/primary" />
             </RelativeLayout>
@@ -77,7 +77,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/at" />
+                    android:text="@string/at_symbol_label" />
             </RelativeLayout>
 
 
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:gravity="center"
-                    android:hint="@string/time"
+                    android:hint="@string/time_hint"
                     app:met_floatingLabel="highlight"
                     app:met_primaryColor="@color/primary" />
             </RelativeLayout>
@@ -108,7 +108,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.17"
-            android:hint="@string/message"
+            android:hint="@string/message_hint"
             android:inputType="textMultiLine"
 
             app:met_floatingLabel="highlight"
@@ -126,7 +126,7 @@
             android:onClick="createTextMessage"
             android:paddingLeft="15dp"
             android:paddingRight="10dp"
-            android:text="@string/schedule_text"
+            android:text="@string/schedule_text_text_field_label"
 
             android:textColor="#fff" />
     </LinearLayout>

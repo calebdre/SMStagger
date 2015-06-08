@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/no_scheduled_texts"
+                    android:text="@string/no_scheduled_texts_text_view"
                     android:textColor="@color/text_muted"
                     android:textSize="20dp" />
             </LinearLayout>
