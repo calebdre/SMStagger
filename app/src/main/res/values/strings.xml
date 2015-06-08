@@ -1,5 +1,33 @@
 <resources>
     <string name="app_name">SMStagger</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- activity_main.xml -->
+    <string name="no_scheduled_texts_text_view">You haven\'t schedule any texts yet.
+        Tap the button below to start!</string>
+
+    <!-- activity_create_text_message.xml -->
+    <string name="recipient_text_field_label">Recipient</string>
+    <string name="phone_number_hint">Phone Number</string>
+    <string name="date_hint">Date</string>
+    <string name="at_symbol_label">\@</string>
+    <string name="time_hint">Time</string>
+    <string name="message_hint">Message</string>
+    <string name="schedule_text_text_field_label">Schedule Text</string>
+
+    <!-- create_message_tool_bar.xml -->
+    <string name="create_message_text_field_label">Create Message</string>
+
+    <!-- text_message_view.xml -->
+    <string name="name_text_field_label">Name</string>
+    <string name="message_that_will_be_sent_text_field_label">This is the message that will be sent. Hi mom!</string>
+    <string name="mmmm_text_field_label">MMMM dd (EEEE) \'at\' h:m a</string>
+    <string name="number_text_field_label">770 881 0074</string>
+
+    <!-- view_messages_tool_bar.xml -->
+    <string name="scheduled_messages_text_field_label">Scheduled Messages</string>
+    <string name="scheduled_text_field_label">Scheduled</string>
+    <string name="sent_text_field_label">Sent</string>
+
+
 </resources>

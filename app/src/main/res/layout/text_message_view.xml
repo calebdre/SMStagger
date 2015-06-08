@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Name"
+            android:text="@string/name_text_field_label"
             android:textColor="@color/text_default"
             android:textSize="22dp"
             android:textStyle="bold" />
@@ -34,7 +34,7 @@
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="This is the message that will be sent. Hi mom!"
+            android:text="@string/message_that_will_be_sent_text_field_label"
             android:textColor="@color/text_default"
             android:textSize="17dp" />
 
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="MMMM dd (EEEE) 'at' h:m a"
+            android:text="@string/mmmm_text_field_label"
             android:textColor="@color/text_muted"
             android:textSize="15dp" />
 
@@ -52,7 +52,7 @@
             android:id="@+id/tmPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="770 881 0074"
+            android:text="@string/number_text_field_label"
             android:textColor="@color/text_muted" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

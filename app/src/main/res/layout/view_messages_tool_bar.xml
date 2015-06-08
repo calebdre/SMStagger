@@ -11,7 +11,7 @@
         android:id="@+id/menu_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Scheduled Messages"
+        android:text="@string/scheduled_messages_text_field_label"
         android:textColor="#fff"
         android:textSize="16dp" />
 
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginRight="5dp"
-                android:text="Scheduled"
+                android:text="@string/scheduled_text_field_label"
                 android:textColor="#fff"
                 android:textSize="12dp" />
 
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
-                android:text="Sent"
+                android:text="@string/sent_text_field_label"
                 android:textColor="#fff"
                 android:textSize="12dp" />
 
