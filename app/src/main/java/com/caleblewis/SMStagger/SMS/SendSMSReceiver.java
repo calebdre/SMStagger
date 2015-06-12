@@ -23,7 +23,7 @@ public class SendSMSReceiver extends BroadcastReceiver{
             Notification noti = new Notification.Builder(context)
                     .setContentTitle("Scheduled Text Message Sent")
                     .setContentText("Could not send scheduled SMS")
-                    .setSmallIcon(R.drawable.ic_action_drop)
+                    .setSmallIcon(R.drawable.ic_action_mail)
                     .build();
 
             NotificationManager nm = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
@@ -37,7 +37,7 @@ public class SendSMSReceiver extends BroadcastReceiver{
         Notification noti = new Notification.Builder(context)
                 .setContentTitle("SMS Sent")
                 .setContentText("Scheduled message for " + name.replaceAll("\\s+","") + " was sent.")
-                .setSmallIcon(R.drawable.ic_action_drop)
+                .setSmallIcon(R.drawable.ic_action_mail)
                 .build();
 
         NotificationManager nm = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);

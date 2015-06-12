@@ -57,7 +57,17 @@ public class MessagesFragment extends Fragment {
                 @Override
                 public void onItemClick(View view, int position) {
                     TextMessage message = textMessageListAdapter.getItem(position);
-                    showCancelMessageDialog(message, v);
+                    showCancelMessageDialog(message, v, getActivity().getString(R.string.cancel_dialog_message),"No, leave it", "Yes, cancel it");
+                }
+            }));
+        }
+
+        if(messageType.equals("sent")){
+            mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    TextMessage message = textMessageListAdapter.getItem(position);
+                    showCancelMessageDialog(message, v, "Delete saved message?", "Keep it", "Yes, remove it");
                 }
             }));
         }
@@ -79,22 +89,17 @@ public class MessagesFragment extends Fragment {
         return v;
     }
 
-    private void showCancelMessageDialog(final TextMessage message, final View v) {
+    private void showCancelMessageDialog(final TextMessage message, final View v,String titleMessage, String cancelMessage, String positiveMessage) {
         new AlertDialog.Builder(getActivity())
                 .setTitle("Cancel Scheduled Message")
-                .setMessage(R.string.cancel_dialog_message)
-                .setCancelable(false)
-                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        dialog.dismiss();
-                    }
-                })
-                .setPositiveButton("Yes, delete it", new DialogInterface.OnClickListener() {
+                .setMessage(titleMessage)
+                .setCancelable(true)
+                .setPositiveButton(positiveMessage, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         new SMSScheduler().cancel(getActivity(), message);
                         textMessageListAdapter.removeItem(message.getId());
+
                         new MessagesDB(getActivity()).deleteMessage(message);
                         new SnackBarAlert(getActivity()).show("The message was cancelled.");
 
@@ -102,7 +107,7 @@ public class MessagesFragment extends Fragment {
                             v.findViewById(R.id.no_messages).setVisibility(View.VISIBLE);
                     }
                 })
-                .setNegativeButton("No, proceed as scheduled", new DialogInterface.OnClickListener() {
+                .setNegativeButton(cancelMessage, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

@@ -38,8 +38,8 @@ public class TextMessageListAdapter extends RecyclerView.Adapter<TextMessageList
     }
 
     public void removeItem(long id){
-        for (TextMessage m: this.tms){
-            if(m.getId() == id) tms.remove(m);
+        for (int i = 0; i < this.getItemCount(); i++) {
+            if(this.tms.get(i).getId() == id) tms.remove(i);
         }
 
         this.notifyDataSetChanged();
