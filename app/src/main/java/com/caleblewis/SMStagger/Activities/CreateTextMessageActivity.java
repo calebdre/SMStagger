@@ -43,6 +43,7 @@ public class CreateTextMessageActivity extends Activity{
 
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog timePickerDialog;
+    private ContactsFilter contactsFilter;
 
     private TextMessageBuilder messageBuilder = new TextMessageBuilder();
 
@@ -73,6 +74,7 @@ public class CreateTextMessageActivity extends Activity{
             }
         });
 
+        contactsFilter = new ContactsFilter(getContentResolver());
         contactField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -82,7 +84,7 @@ public class CreateTextMessageActivity extends Activity{
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 conactsListAdapter.clear();
-                conactsListAdapter.addAll(new ContactsFilter(getContentResolver()).filter(s.toString()));
+                conactsListAdapter.addAll(contactsFilter.filter(s.toString()));
                 contactsListView.setVisibility(View.VISIBLE);
             }
 
