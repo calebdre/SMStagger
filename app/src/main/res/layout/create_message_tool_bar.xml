@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Message"
+        android:text="@string/create_message_text_field_label"
         android:textColor="#fff"
         android:textSize="21dp" />
 
