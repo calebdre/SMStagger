@@ -33,6 +33,18 @@ public class TextMessageListAdapter extends RecyclerView.Adapter<TextMessageList
         this.notifyDataSetChanged();
     }
 
+    public TextMessage getItem(int pos){
+        return this.tms.get(pos);
+    }
+
+    public void removeItem(long id){
+        for (TextMessage m: this.tms){
+            if(m.getId() == id) tms.remove(m);
+        }
+
+        this.notifyDataSetChanged();
+    }
+
     @Override
     public TextMessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.text_message_view, parent, false);

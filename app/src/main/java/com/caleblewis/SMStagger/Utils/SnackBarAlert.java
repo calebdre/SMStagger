@@ -20,7 +20,7 @@ public class SnackBarAlert {
                 .horizontalPadding(40)
                 .text(message)
                 .singleLine(true)
-                .duration(5000)
+                .duration(4000)
                 .show(activity);
     }
 }

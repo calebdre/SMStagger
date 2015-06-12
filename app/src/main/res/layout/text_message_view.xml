@@ -10,49 +10,66 @@
     android:layout_marginTop="10dp"
     card_view:cardCornerRadius="4dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        style="@style/card_layout"
-        android:layout_width="match_parent"
-
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tmName"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="@string/name_text_field_label"
-            android:textColor="@color/text_default"
-            android:textSize="22dp"
-            android:textStyle="bold" />
+            android:paddingLeft="15dp"
+            android:paddingBottom="15dp"
+            >
 
-        <TextView
-            android:id="@+id/tmMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="@string/message_that_will_be_sent_text_field_label"
-            android:textColor="@color/text_default"
-            android:textSize="17dp" />
-
-        <TextView
-            android:id="@+id/tmDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/mmmm_text_field_label"
-            android:textColor="@color/text_muted"
-            android:textSize="15dp" />
+            <TextView
+                android:id="@+id/tmName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="@string/name_text_field_label"
+                android:textColor="@color/text_default"
+                android:textSize="22dp"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold" />
 
 
-        <TextView
-            android:id="@+id/tmPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/number_text_field_label"
-            android:textColor="@color/text_muted" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tmMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/message_that_will_be_sent_text_field_label"
+                android:textColor="@color/text_default"
+                android:layout_below="@id/tmName"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/tmDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mmmm_text_field_label"
+                android:textColor="@color/text_muted"
+                android:layout_below="@id/tmMessage"
+                android:textSize="15dp" />
+
+
+            <TextView
+                android:id="@+id/tmPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/number_text_field_label"
+                android:textColor="@color/text_muted"
+                android:layout_below="@id/tmDate"/>
+
+            <ImageButton
+                android:id="@+id/message_cancel_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_action_cancel"
+                android:background="@color/background"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/cancel_message_button_description"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
 </android.support.v7.widget.CardView>

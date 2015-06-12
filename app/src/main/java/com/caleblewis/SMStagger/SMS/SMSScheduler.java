@@ -22,4 +22,12 @@ public class SMSScheduler {
         AlarmManager am = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, timeToKill, sender);
     }
+
+    public void cancel(Context context, TextMessage textMessage){
+        Intent intent = new Intent(context, SendSMSReceiver.class);
+        PendingIntent sender = PendingIntent.getBroadcast(context, (int) textMessage.getId(), intent, 0);
+
+        AlarmManager am = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+        am.cancel(sender);
+    }
 }

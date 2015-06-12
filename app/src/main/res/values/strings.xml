@@ -28,6 +28,8 @@
     <string name="scheduled_messages_text_field_label">Scheduled Messages</string>
     <string name="scheduled_text_field_label">Scheduled</string>
     <string name="sent_text_field_label">Sent</string>
+    <string name="cancel_message_button_description">Cancel message</string>
+    <string name="cancel_dialog_message">Are you sure you want to cancel this message?</string>
 
 
 </resources>

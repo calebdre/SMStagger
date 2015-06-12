@@ -1,20 +1,28 @@
 package com.caleblewis.SMStagger.Fragments;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.caleblewis.SMStagger.Adapters.TextMessageListAdapter;
+import com.caleblewis.SMStagger.Libs.RecyclerItemClickListener;
 import com.caleblewis.SMStagger.MessagesDB;
 import com.caleblewis.SMStagger.Models.TextMessage;
 import com.caleblewis.SMStagger.R;
+import com.caleblewis.SMStagger.SMS.SMSScheduler;
+import com.caleblewis.SMStagger.Utils.SnackBarAlert;
+import com.rey.material.widget.SnackBar;
 
 import java.util.List;
 
@@ -26,7 +34,7 @@ public class MessagesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.viewpager_messages_tab,container,false);
+        final View v =inflater.inflate(R.layout.viewpager_messages_tab,container,false);
 
         Bundle bundle = getArguments();
         String messageType = getArguments().getString("type");
@@ -44,6 +52,16 @@ public class MessagesFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(textMessageListAdapter);
 
+        if(messageType.equals("scheduled")) {
+            mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    TextMessage message = textMessageListAdapter.getItem(position);
+                    showCancelMessageDialog(message, v);
+                }
+            }));
+        }
+
         CardView card = (CardView) v.findViewById(R.id.no_messages);
 
         TextView t = (TextView) v.findViewById(R.id.no_messages_text);
@@ -59,5 +77,36 @@ public class MessagesFragment extends Fragment {
         }
 
         return v;
+    }
+
+    private void showCancelMessageDialog(final TextMessage message, final View v) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Cancel Scheduled Message")
+                .setMessage(R.string.cancel_dialog_message)
+                .setCancelable(false)
+                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton("Yes, delete it", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        new SMSScheduler().cancel(getActivity(), message);
+                        textMessageListAdapter.removeItem(message.getId());
+                        new MessagesDB(getActivity()).deleteMessage(message);
+                        new SnackBarAlert(getActivity()).show("The message was cancelled.");
+
+                        if (textMessageListAdapter.getItemCount() == 0)
+                            v.findViewById(R.id.no_messages).setVisibility(View.VISIBLE);
+                    }
+                })
+                .setNegativeButton("No, proceed as scheduled", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).create().show();
     }
 }
