@@ -5,6 +5,7 @@
     <!-- activity_main.xml -->
     <string name="no_scheduled_texts_text_view">You haven\'t schedule any texts yet.
         Tap the button below to start!</string>
+    <string name="no_sent_texts_text_view">Your sent messages will live here so you can keep track of them.</string>
 
     <!-- activity_create_text_message.xml -->
     <string name="recipient_text_field_label">Recipient</string>

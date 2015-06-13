@@ -47,9 +47,18 @@ public class ContactsFilter {
 
     public Collection<String> filter(String against){
         ArrayList<String> newList = new ArrayList<String>();
+        char[] against_array = against.toLowerCase().toCharArray();
 
         for(String contact: contacts){
-            if(contact.contains(against)) newList.add(contact);
+            char[] contact_array = contact.toLowerCase().toCharArray();
+            boolean match = true;
+
+            for (int i =0; i < against_array.length; i++){
+                if(!Character.toString(against_array[i]).equals(Character.toString(contact_array[i])))
+                    match = false;
+            }
+
+            if(match) newList.add(contact);
         }
 
         return newList;

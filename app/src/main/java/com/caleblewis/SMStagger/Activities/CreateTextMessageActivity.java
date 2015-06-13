@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -60,17 +61,19 @@ public class CreateTextMessageActivity extends Activity{
     }
 
     private void set_listeners() {
-        dateText.setOnClickListener(new View.OnClickListener() {
+        dateText.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
                 datePickerDialog.show();
+                return false;
             }
         });
 
-        timeText.setOnClickListener(new View.OnClickListener() {
+        timeText.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
                 timePickerDialog.show();
+                return false;
             }
         });
 

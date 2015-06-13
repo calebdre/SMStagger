@@ -52,7 +52,10 @@ public class MessagesFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(textMessageListAdapter);
 
+        TextView t = (TextView) v.findViewById(R.id.no_messages_text);
+
         if(messageType.equals("scheduled")) {
+            t.setText(getString(R.string.no_scheduled_texts_text_view));
             mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
@@ -63,6 +66,7 @@ public class MessagesFragment extends Fragment {
         }
 
         if(messageType.equals("sent")){
+            t.setText(getString(R.string.no_sent_texts_text_view));
             mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
@@ -74,8 +78,7 @@ public class MessagesFragment extends Fragment {
 
         CardView card = (CardView) v.findViewById(R.id.no_messages);
 
-        TextView t = (TextView) v.findViewById(R.id.no_messages_text);
-        t.setText("No messages have been sent yet. Check back later!");
+
 
         if(messages.size() != 0){
             card.setVisibility(View.GONE);

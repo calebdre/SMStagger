@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TextStagger.iml" filepath="$PROJECT_DIR$/TextStagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SMStagger.iml" filepath="$PROJECT_DIR$/SMStagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
