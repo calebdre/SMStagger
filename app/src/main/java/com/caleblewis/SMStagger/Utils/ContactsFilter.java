@@ -54,8 +54,10 @@ public class ContactsFilter {
             boolean match = true;
 
             for (int i =0; i < against_array.length; i++){
-                if(!Character.toString(against_array[i]).equals(Character.toString(contact_array[i])))
+                if(!Character.toString(against_array[i]).equals(Character.toString(contact_array[i]))){
                     match = false;
+                    break;
+                }
             }
 
             if(match) newList.add(contact);
